@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 func GetName() (p1 string,p2 string){
 	p1 = "hello"
@@ -72,6 +75,58 @@ func Param() {
 
 	fmt.Println(Monday)
 	foo(Policy_MAX)
+
+	str := "Hello, 世界"
+	n := len(str)
+	for i := 0; i < n; i++ {
+		ch := str[i]    // 依据下标取字符串中的字符，ch 类型为 byte
+		fmt.Println(i, string(ch))
+	}
+
+	v111 := "100"
+	v222, _ := strconv.Atoi(v111)  // 将字符串转化为整型，v2 = 100
+	fmt.Println(v222)
+
+	testMap := map[string]int{
+		"s":1,
+		"s2":1,
+		"s3":1,
+	}
+	for key, value := range testMap {
+		fmt.Println(key, value)
+	}
+
+
+	a11 := 100
+	var ptr *int
+	ptr = &a11
+	fmt.Println(ptr, *ptr)
+
+	x1 := 1
+	x2 := 2
+	swap(x1, x2)
+	fmt.Println(x1, x2)
+	swapPoint(&x1, &x2) //&值=>取地址， *地址=>取值
+	fmt.Println(x1, x2)
+
+	//simplemath.Add()
+
+	p1 := new(int) //返回 int 类型指针，相当于 var p1 *int
+	type Student struct {
+		id int
+		name string
+	}
+	p2 := new(Student)
+	fmt.Println(*p1, *p2)
+}
+
+func swap(a int, b int) {
+	a, b = b, a
+	fmt.Println("swap:", a, b)
+}
+func swapPoint(a *int, b *int) {
+	*a, *b = *b, *a
+	fmt.Println("swapPoint:", *a, *b)
 }
 
 type PolicyType int32
